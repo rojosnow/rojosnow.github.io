@@ -1,0 +1,13 @@
+<%  var posts = site.posts.reverse();
+    posts.each(function(post) { %>
+    <%- partial('common/article', { post: post, index: true }) %>
+<% });
+
+if (parseInt(site.posts.length/config.per_page) > 1) { %>
+    <nav id="page-nav">
+        <%- paginator({
+            prev_text: '&laquo; ' + __('nav.prev'),
+            next_text: __('nav.next') + ' &raquo;'
+        }) %>
+    </nav>
+<% } %>
